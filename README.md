@@ -1,12 +1,34 @@
-# React + Vite
+# React useCallback
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔁 What is useCallback?
+useCallback is a React Hook that returns a memoized version of a callback function, so the function is only recreated when its dependencies change.
+This helps to prevent unnecessary re-renders, especially when passing functions as props to child components.
 
-Currently, two official plugins are available:
+🔹 Syntax
+const memoizedCallback = useCallback(() => {
+  // some logic
+}, [dependencies]);
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#Just like useMemo, but instead of returning a value, it returns a function.
 
-## Expanding the ESLint configuration
+🧠 Why use useCallback?
+In React:
+Functions are recreated on every render.
+If you pass these functions to child components, it may cause them to re-render even if their behavior hasn’t changed.
+useCallback helps prevent that unnecessary render.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+✅ When to Use useCallback
+Use it when:
+you're passing a function to a child component that is memoized (via React.memo).
+The function depends on state or props, but you don’t want it recreated unless those change.
+You're optimizing performance-critical code.
+
+📦 Summary Table
+| Feature    | `useCallback`                        |
+| ---------- | ------------------------------------ |
+| Purpose    | Memoizes a function                  |
+| Returns    | The same function unless deps change |
+| Helps with | Preventing child re-renders          |
+| Common Use | With `React.memo` child components   |
+| Avoid if   | Function recreation isn’t a problem  |
+
