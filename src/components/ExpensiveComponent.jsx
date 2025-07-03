@@ -5,6 +5,7 @@ import { useState } from "react";
 const ExpensiveComponent = () => {
   const [count, setCount] = useState(0);
   const [text, setText] = useState("");
+  
   const expesiveCalculation = useCallback(() => {
     console.log("Running Expesive calculations...");
     let result = 0;

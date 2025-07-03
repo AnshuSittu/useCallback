@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import ChildComponent from "./components/childComponent";
+import ChildComponent from "./components/ChildComponent";
 import { useCallback } from "react";
 import ExpensiveComponent from "./components/ExpensiveComponent";
 
